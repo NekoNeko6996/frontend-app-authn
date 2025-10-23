@@ -106,7 +106,7 @@ const ForgotPasswordPage = (props) => {
           <Tab title={tabTitle} eventKey={LOGIN_PAGE} />
         </Tabs>
         <div id="main-content" className="main-content">
-          <Form id="forget-password-form" name="forget-password-form" className="mw-xs">
+          <Form id="forget-password-form" name="forget-password-form" className="">
             <ForgotPasswordAlert email={bannerEmail} emailError={formErrors} status={status} />
             <h2 className="h4">
               {formatMessage(messages['forgot.password.page.heading'])}
@@ -130,7 +130,7 @@ const ForgotPasswordPage = (props) => {
               name="submit-forget-password"
               type="submit"
               variant="brand"
-              className="forgot-password--button"
+              className="btn-submit"
               state={submitState}
               labels={{
                 default: formatMessage(messages['forgot.password.page.submit.button']),
@@ -143,7 +143,7 @@ const ForgotPasswordPage = (props) => {
               <Hyperlink
                 id="forgot-password"
                 name="forgot-password"
-                className="ml-4 font-weight-500 text-body"
+                className="font-weight-500 text-body"
                 destination={getConfig().LOGIN_ISSUE_SUPPORT_LINK}
                 target="_blank"
                 showLaunchIcon={false}

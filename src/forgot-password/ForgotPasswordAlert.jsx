@@ -74,7 +74,7 @@ const ForgotPasswordAlert = (props) => {
     return (
       <Alert
         id="validation-errors"
-        className="mb-4"
+        className="mb-4 mt-2"
         variant={`${status === 'complete' ? 'success' : 'danger'}`}
         icon={status === 'complete' ? CheckCircle : Error}
       >
