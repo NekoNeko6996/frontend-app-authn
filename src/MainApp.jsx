@@ -28,36 +28,49 @@ import { RegistrationPage } from './register';
 import { ResetPasswordPage } from './reset-password';
 
 import './index.scss';
+import { CustomFooter, CustomHeader } from '@nekoneko6996/cusc-custom-brand';
+
+import { primaryNav } from './auth-header/auth-header';
 
 registerIcons();
 
-const MainApp = () => (
-  <AppProvider store={configureStore()}>
-    <Helmet>
-      <link rel="shortcut icon" href={getConfig().FAVICON_URL} type="image/x-icon" />
-    </Helmet>
-    {getConfig().ZENDESK_KEY && <Zendesk />}
-    <Routes>
-      <Route path="/" element={<Navigate replace to={updatePathWithQueryParams(REGISTER_PAGE)} />} />
-      <Route
-        path={REGISTER_EMBEDDED_PAGE}
-        element={<EmbeddedRegistrationRoute><RegistrationPage /></EmbeddedRegistrationRoute>}
-      />
-      <Route
-        path={LOGIN_PAGE}
-        element={
-          <UnAuthOnlyRoute><Logistration selectedPage={LOGIN_PAGE} /></UnAuthOnlyRoute>
-        }
-      />
-      <Route path={REGISTER_PAGE} element={<UnAuthOnlyRoute><Logistration /></UnAuthOnlyRoute>} />
-      <Route path={RESET_PAGE} element={<UnAuthOnlyRoute><ForgotPasswordPage /></UnAuthOnlyRoute>} />
-      <Route path={PASSWORD_RESET_CONFIRM} element={<ResetPasswordPage />} />
-      <Route path={AUTHN_PROGRESSIVE_PROFILING} element={<ProgressiveProfiling />} />
-      <Route path={RECOMMENDATIONS} element={<RecommendationsPage />} />
-      <Route path={PAGE_NOT_FOUND} element={<NotFoundPage />} />
-      <Route path="*" element={<Navigate replace to={PAGE_NOT_FOUND} />} />
-    </Routes>
-  </AppProvider>
-);
+const MainApp = () => {
+
+  // call func to get primary nav items
+  const primary = primaryNav();
+
+  console.log("Primary Nav:", primary);
+
+  return (
+    <AppProvider store={configureStore()}>
+      <Helmet>
+        <link rel="shortcut icon" href={getConfig().FAVICON_URL} type="image/x-icon" />
+      </Helmet>
+      {getConfig().ZENDESK_KEY && <Zendesk />}
+      <CustomHeader primaryNav={primary} secondaryNav={[]} showLoginButtons={ false } />
+      <Routes>
+        <Route path="/" element={<Navigate replace to={updatePathWithQueryParams(REGISTER_PAGE)} />} />
+        <Route
+          path={REGISTER_EMBEDDED_PAGE}
+          element={<EmbeddedRegistrationRoute><RegistrationPage /></EmbeddedRegistrationRoute>}
+        />
+        <Route
+          path={LOGIN_PAGE}
+          element={
+            <UnAuthOnlyRoute><Logistration selectedPage={LOGIN_PAGE} /></UnAuthOnlyRoute>
+          }
+        />
+        <Route path={REGISTER_PAGE} element={<UnAuthOnlyRoute><Logistration /></UnAuthOnlyRoute>} />
+        <Route path={RESET_PAGE} element={<UnAuthOnlyRoute><ForgotPasswordPage /></UnAuthOnlyRoute>} />
+        <Route path={PASSWORD_RESET_CONFIRM} element={<ResetPasswordPage />} />
+        <Route path={AUTHN_PROGRESSIVE_PROFILING} element={<ProgressiveProfiling />} />
+        <Route path={RECOMMENDATIONS} element={<RecommendationsPage />} />
+        <Route path={PAGE_NOT_FOUND} element={<NotFoundPage />} />
+        <Route path="*" element={<Navigate replace to={PAGE_NOT_FOUND} />} />
+      </Routes>
+      <CustomFooter />
+    </AppProvider>
+  )
+};
 
 export default MainApp;

@@ -38,23 +38,36 @@ const BaseContainer = ({ children, showWelcomeBanner, fullName }) => {
   }
 
   return (
-    <>
-      <div className="col-md-12 extra-large-screen-top-stripe" />
-      <div className="layout">
-        <MediaQuery maxWidth={breakpoints.small.maxWidth - 1}>
-          {showWelcomeBanner ? <AuthSmallLayout fullName={fullName} /> : <DefaultSmallLayout />}
-        </MediaQuery>
-        <MediaQuery minWidth={breakpoints.medium.minWidth} maxWidth={breakpoints.large.maxWidth - 1}>
-          {showWelcomeBanner ? <AuthMediumLayout fullName={fullName} /> : <DefaultMediumLayout />}
-        </MediaQuery>
-        <MediaQuery minWidth={breakpoints.extraLarge.minWidth}>
-          {showWelcomeBanner ? <AuthLargeLayout fullName={fullName} /> : <DefaultLargeLayout />}
-        </MediaQuery>
-        <div className={classNames('content', { 'align-items-center mt-0': showWelcomeBanner })}>
+    <main style={{ minHeight: '100vh' }}>
+      <div className="main-container">
+        <div class="hero-section">
+          <div class="hero-glow"></div>
+          <div class="hero-card">
+            <h1 class="hero-title">
+              Bắt Đầu Học<br/>
+              <span class="hero-gradient-text">Cùng Chúng Tôi</span>
+            </h1>
+            <p class="hero-desc">
+              Tham gia cùng hàng ngàn học viên, được hỗ trợ tư vấn cùng các chuyên gia hàng đầu.
+            </p>
+            <div class="hero-stats">
+              <div class="stat-avatars">
+                <img style={{height: "50px", marginRight: "10px"}} src="http://local.openedx.io:8000/static/tutor-edx-mytheme/images/cusc-logo.png" alt="" />
+                <img style={{height: "50px"}} src="http://local.openedx.io:8000/static/tutor-edx-mytheme/images/ctu-logo.png" alt="" />
+              </div>
+              <div>
+                <div class="stat-text-title">36000+ Học viên</div>
+                <div class="stat-text-sub">Vẫn đang phát triển từng ngày</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={classNames('auth-form', { 'align-items-center mt-0': showWelcomeBanner })}>
           {children}
         </div>
       </div>
-    </>
+    </main>
   );
 };
 

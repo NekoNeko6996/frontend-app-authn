@@ -225,6 +225,7 @@ const LoginPage = (props) => {
         {showResetPasswordSuccessBanner && <ResetPasswordSuccess />}
         <Form id="sign-in-form" name="sign-in-form">
           <FormGroup
+            className="form-input"
             name="emailOrUsername"
             value={formFields.emailOrUsername}
             autoComplete="on"
@@ -245,11 +246,12 @@ const LoginPage = (props) => {
             floatingLabel={formatMessage(messages['login.password.label'])}
           />
           <StatefulButton
+
             name="sign-in"
             id="sign-in"
             type="submit"
             variant="brand"
-            className="login-button-width"
+            className="btn-submit"
             state={submitState}
             labels={{
               default: formatMessage(messages['sign.in.button']),
