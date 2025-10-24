@@ -1,16 +1,16 @@
-import React from 'react';
+// import React from 'react';
 
-import { getConfig } from '@edx/frontend-platform';
-import { breakpoints } from '@openedx/paragon';
+// import { getConfig } from '@edx/frontend-platform';
+// import { breakpoints } from '@openedx/paragon';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import MediaQuery from 'react-responsive';
+// import MediaQuery from 'react-responsive';
 
-import { DefaultLargeLayout, DefaultMediumLayout, DefaultSmallLayout } from './components/default-layout';
-import {
-  ImageExtraSmallLayout, ImageLargeLayout, ImageMediumLayout, ImageSmallLayout,
-} from './components/image-layout';
-import { AuthLargeLayout, AuthMediumLayout, AuthSmallLayout } from './components/welcome-page-layout';
+// import { DefaultLargeLayout, DefaultMediumLayout, DefaultSmallLayout } from './components/default-layout';
+// import {
+//   ImageExtraSmallLayout, ImageLargeLayout, ImageMediumLayout, ImageSmallLayout,
+// } from './components/image-layout';
+// import { AuthLargeLayout, AuthMediumLayout, AuthSmallLayout } from './components/welcome-page-layout';
 
 const BaseContainer = ({ children, showWelcomeBanner, fullName }) => {
   // const enableImageLayout = getConfig().ENABLE_IMAGE_LAYOUT;

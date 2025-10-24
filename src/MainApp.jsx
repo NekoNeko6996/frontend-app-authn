@@ -30,7 +30,7 @@ import { ResetPasswordPage } from './reset-password';
 import './index.scss';
 import { CustomFooter, CustomHeader } from '@nekoneko6996/cusc-custom-brand';
 
-import { primaryNav } from './auth-header/auth-header';
+import { primaryNav, ctuLogoImgSrc, cuscLogoImgSrc } from './auth-header/auth-header';
 
 registerIcons();
 
@@ -38,8 +38,10 @@ const MainApp = () => {
 
   // call func to get primary nav items
   const primary = primaryNav();
+  const cuscLogo = cuscLogoImgSrc();
+  const ctuLogo = ctuLogoImgSrc();
 
-  console.log("Primary Nav:", primary);
+  console.log('CUSC Logo URL:', cuscLogo);
 
   return (
     <AppProvider store={configureStore()}>
@@ -47,7 +49,7 @@ const MainApp = () => {
         <link rel="shortcut icon" href={getConfig().FAVICON_URL} type="image/x-icon" />
       </Helmet>
       {getConfig().ZENDESK_KEY && <Zendesk />}
-      <CustomHeader primaryNav={primary} secondaryNav={[]} showLoginButtons={ false } />
+      <CustomHeader firstLogo={ctuLogo} secondLogo={cuscLogo} primaryNav={primary} secondaryNav={[]} showLoginButtons={ false } />
       <Routes>
         <Route path="/" element={<Navigate replace to={updatePathWithQueryParams(REGISTER_PAGE)} />} />
         <Route
@@ -68,7 +70,7 @@ const MainApp = () => {
         <Route path={PAGE_NOT_FOUND} element={<NotFoundPage />} />
         <Route path="*" element={<Navigate replace to={PAGE_NOT_FOUND} />} />
       </Routes>
-      <CustomFooter />
+      <CustomFooter firstLogo={cuscLogo} secondLogo={ctuLogo} />
     </AppProvider>
   )
 };
