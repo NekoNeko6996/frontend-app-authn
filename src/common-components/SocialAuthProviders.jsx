@@ -14,6 +14,40 @@ const SocialAuthProviders = (props) => {
   const { formatMessage } = useIntl();
   const { referrer, socialAuthProviders } = props;
 
+  // test with static providers data
+  SocialAuthProviders.defaultProps = {
+    socialAuthProviders: [
+      {
+        id: 'google',
+        name: 'Google',
+        iconClass: 'google',
+        iconImage: null,
+        loginUrl: '/auth/complete/google-oauth2/?process=login',
+        registerUrl: '/auth/complete/google-oauth2/?process=register',
+        skipRegistrationForm: false,
+      },
+      {
+        id: 'facebook',
+        name: 'Facebook',
+        iconClass: 'facebook',
+        iconImage: null,
+        loginUrl: '/auth/complete/facebook/?process=login',
+        registerUrl: '/auth/complete/facebook/?process=register',
+        skipRegistrationForm: false,
+      },
+      {
+        id: 'custom-oauth',
+        name: 'Custom OAuth',
+        iconClass: '',
+        iconImage: 'https://example.com/custom-oauth-icon.png',
+        loginUrl: '/auth/complete/custom-oauth/?process=login',
+        registerUrl: '/auth/complete/custom-oauth/?process=register',
+        skipRegistrationForm: true,
+      }
+    ],
+  };
+  // end test
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -26,7 +60,7 @@ const SocialAuthProviders = (props) => {
       id={provider.id}
       key={provider.id}
       type="button"
-      className={`btn-social btn-${provider.id} ${index % 2 === 0 ? 'mr-3' : ''}`}
+      className={`w-100 btn-${provider.id} mb-2 d-flex align-items-center btn btn-outline-secondary btn-tpa`}
       data-provider-url={referrer === LOGIN_PAGE ? provider.loginUrl : provider.registerUrl}
       onClick={handleSubmit}
     >
