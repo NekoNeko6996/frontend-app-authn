@@ -41,7 +41,10 @@ const MainApp = () => {
   const cuscLogo = cuscLogoImgSrc();
   const ctuLogo = ctuLogoImgSrc();
 
-  console.log('CUSC Logo URL:', cuscLogo);
+  const logoRedirectURL = [
+    { firstLogo: "https://www.ctu.edu.vn/" },
+    { secondLogo: "https://cusc.ctu.edu.vn/cms/" }
+  ];
 
   return (
     <AppProvider store={configureStore()}>
@@ -49,7 +52,7 @@ const MainApp = () => {
         <link rel="shortcut icon" href={getConfig().FAVICON_URL} type="image/x-icon" />
       </Helmet>
       {getConfig().ZENDESK_KEY && <Zendesk />}
-      <CustomHeader firstLogo={ctuLogo} secondLogo={cuscLogo} primaryNav={primary} secondaryNav={[]} showLoginButtons={ false } />
+      <CustomHeader firstLogo={ctuLogo} secondLogo={cuscLogo} primaryNav={primary} secondaryNav={[]} showLoginButtons={false} />
       <Routes>
         <Route path="/" element={<Navigate replace to={updatePathWithQueryParams(REGISTER_PAGE)} />} />
         <Route
@@ -70,7 +73,7 @@ const MainApp = () => {
         <Route path={PAGE_NOT_FOUND} element={<NotFoundPage />} />
         <Route path="*" element={<Navigate replace to={PAGE_NOT_FOUND} />} />
       </Routes>
-      <CustomFooter firstLogo={cuscLogo} secondLogo={ctuLogo} />
+      <CustomFooter firstLogo={cuscLogo} secondLogo={ctuLogo} firstLogoRedirectURL={logoRedirectURL.secondLogo} secondLogoRedirectURL={logoRedirectURL.firstLogo} />
     </AppProvider>
   )
 };
